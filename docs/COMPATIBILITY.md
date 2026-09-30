@@ -1,6 +1,6 @@
 # Compatibilité réellement lue
 
-CMS lu via l’accès GitHub direct le 30 septembre 2026 : commit `49f95c98a904fbb116e698006b42232c505bb65c` de `jasmin-abernathy/mon-manager-web-cms`.
+CMS lu via l’accès GitHub direct le 30 septembre 2026 : commit `49f95c98a904fbb116e698006b42232c505bb65c` de `jasmin-abernathy/dendrila-cms`.
 
 ## Présent
 

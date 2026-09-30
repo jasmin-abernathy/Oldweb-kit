@@ -1,6 +1,6 @@
 # Oldweb-kit — Web des années 2000 pour Dendrila CMS
 
-Kit indépendant de styles visuels pour Dendrila CMS (anciennement Verger CMS), actuellement dans `jasmin-abernathy/mon-manager-web-cms`, gérable à terme par Mon Manager Web. Les styles se combinent avec les kits fonctionnels existants et ne remplacent pas leurs contenus.
+Kit indépendant de styles visuels pour Dendrila CMS, actuellement dans `jasmin-abernathy/dendrila-cms`, gérable à terme par Mon Manager Web. Les styles se combinent avec les kits fonctionnels existants et ne remplacent pas leurs contenus.
 
 ## Livré
 
@@ -23,8 +23,8 @@ python3 -m unittest discover -s tests -v
 python3 tools/oldweb.py compile oldweb-personal
 python3 tools/oldweb.py build dist/oldweb-kit-0.1.0.zip
 python3 tools/oldweb.py verify dist/oldweb-kit-0.1.0.zip
-python3 tools/oldweb.py install dist/oldweb-kit-0.1.0.zip /chemin/mon-manager-web-cms --dry-run
-python3 tools/oldweb.py install dist/oldweb-kit-0.1.0.zip /chemin/mon-manager-web-cms
+python3 tools/oldweb.py install dist/oldweb-kit-0.1.0.zip /chemin/dendrila-cms --dry-run
+python3 tools/oldweb.py install dist/oldweb-kit-0.1.0.zip /chemin/dendrila-cms
 ```
 
 Puis, dans le CMS et avec sa toolchain PHP ≥ 8.5 :
