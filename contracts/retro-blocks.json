@@ -1,0 +1,63 @@
+{
+  "status": "design-contract-not-runtime-schema",
+  "version": 1,
+  "blocks": [
+    {
+      "id": "badge-links",
+      "fields": [
+        "media_id",
+        "alt",
+        "href",
+        "label",
+        "order"
+      ],
+      "rules": [
+        "HTTP(S) URLs only",
+        "image resolved by media service",
+        "88x31 graphic with larger touch target",
+        "no HTML input"
+      ]
+    },
+    {
+      "id": "neighbor-links",
+      "fields": [
+        "label",
+        "href",
+        "description",
+        "order"
+      ],
+      "rules": [
+        "manual links first",
+        "no server URL fetching in v0.1"
+      ]
+    },
+    {
+      "id": "whats-new",
+      "source": "published content collection",
+      "rules": [
+        "reuse content IDs and publication rules"
+      ]
+    },
+    {
+      "id": "retro-gallery",
+      "source": "existing gallery and media",
+      "rules": [
+        "no autoplay",
+        "preserve captions and alt"
+      ]
+    }
+  ],
+  "optional_modules": {
+    "guestbook": {
+      "implemented": false,
+      "moderation_required": true
+    },
+    "webring": {
+      "implemented": false
+    },
+    "aggregate-counter": {
+      "implemented": false,
+      "enabled_by_default": false
+    }
+  }
+}

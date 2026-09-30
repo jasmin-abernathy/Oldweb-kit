@@ -1,6 +1,6 @@
-# Oldweb-kit — Web des années 2000 pour Verger CMS
+# Oldweb-kit — Web des années 2000 pour Dendrila CMS
 
-Kit indépendant de styles visuels pour `jasmin-abernathy/mon-manager-web-cms`, gérable à terme par Mon Manager Web. Les styles se combinent avec les kits fonctionnels existants et ne remplacent pas leurs contenus.
+Kit indépendant de styles visuels pour Dendrila CMS (anciennement Verger CMS), actuellement dans `jasmin-abernathy/mon-manager-web-cms`, gérable à terme par Mon Manager Web. Les styles se combinent avec les kits fonctionnels existants et ne remplacent pas leurs contenus.
 
 ## Livré
 

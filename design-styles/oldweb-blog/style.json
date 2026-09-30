@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "oldweb-blog",
+  "label": "Blog illustré — années 2000",
+  "description": "Colonne de lecture, articles et bannière illustrée ; le rendu rétro est fourni par un adaptateur dédié.",
+  "keywords": [
+    "rétro",
+    "années 2000",
+    "web personnel"
+  ],
+  "tokens": {
+    "layout": {
+      "content_width": "medium",
+      "section_spacing": "balanced",
+      "hero": "media_first",
+      "text_column": "narrow",
+      "alignment": "left"
+    },
+    "typography": {
+      "heading_style": "editorial",
+      "body_style": "neutral",
+      "scale": "restrained"
+    },
+    "media": {
+      "prominence": "medium",
+      "crop": "natural",
+      "gallery": "editorial",
+      "full_bleed": false
+    },
+    "illustration": {
+      "frequency": "occasional",
+      "style": "organic"
+    },
+    "surfaces": {
+      "radius": "none",
+      "borders": "present",
+      "shadows": "none"
+    },
+    "accent": {
+      "usage": "balanced",
+      "backgrounds": "alternating"
+    },
+    "motion": {
+      "level": "none"
+    }
+  },
+  "constraints": {
+    "contrast_target": "AA",
+    "focus_visible": true,
+    "reduced_motion": true,
+    "autoplay_media": false
+  }
+}

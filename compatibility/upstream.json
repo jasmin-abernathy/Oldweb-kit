@@ -1,0 +1,15 @@
+{
+  "repository": "jasmin-abernathy/mon-manager-web-cms",
+  "commit": "49f95c98a904fbb116e698006b42232c505bb65c",
+  "schemas": {
+    "design-style.schema.json": "0d88c038aa51be1900f686f356f14b645438091acf6c3af9a8935b4a9116f3a2",
+    "site-composition.schema.json": "43728b510adf9ea85f105322d0f63982700e6ef447874f84a360555ceb157d9a"
+  },
+  "source_blobs": {
+    "src/Design/DesignStyleDefinition.php": "d9e24044fd506246ed4afce06b788c0b98488ea5",
+    "src/Design/CssTokenCompiler.php": "0ee59112e8163e22617524123eb1537aa46d7c89",
+    "bin/compile-design-style.php": "939127dc929d13c99a91e0a57c646d63d2447455"
+  },
+  "observed_php_minimum": "8.5",
+  "checked_at": "2026-09-30"
+}
