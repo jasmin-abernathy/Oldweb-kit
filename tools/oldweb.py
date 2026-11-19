@@ -182,9 +182,12 @@ def install(archive, cms, dry_run=False, root=ROOT):
     catalogue = safe_existing(cms / 'design-styles')
     if not catalogue.is_dir():
         raise InvalidKit('Missing CMS design-styles directory')
+    provenance = parse_json((root / 'compatibility/upstream.json').read_bytes())
+    alternatives = provenance.get('compatible_install_schemas', {})
     for name, digest in expected_manifest(root)['schema_sha256'].items():
         path = safe_existing(cms / 'schemas' / name)
-        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+        compatible = {digest, alternatives.get(name, {}).get('sha256')}
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() not in compatible:
             raise InvalidKit('CMS schema differs from verified contract: ' + name)
     def check_targets():
         for name in IDS:

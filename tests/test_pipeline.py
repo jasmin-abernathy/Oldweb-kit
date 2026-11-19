@@ -62,6 +62,11 @@ class PipelineTests(unittest.TestCase):
         with self.assertRaises(kit.InvalidKit): kit.install(self.archive, self.cms)
         self.assertFalse((self.cms / 'design-styles' / kit.IDS[0]).exists())
         self.assertEqual((target / 'keep').read_text(), 'unchanged')
+    def test_install_accepts_verified_current_cms_schema(self):
+        schema = SOURCE / 'compatibility/site-composition-dendrila-2026-11-19.schema.json'
+        (self.cms / 'schemas/site-composition.schema.json').write_bytes(schema.read_bytes())
+        self.assertEqual(kit.install(self.archive, self.cms), list(kit.IDS))
+        self.assertEqual(self.sentinel.read_bytes(), self.before)
     def test_schema_drift_blocks_install(self):
         (self.cms / 'schemas/design-style.schema.json').write_text('{}')
         with self.assertRaises(kit.InvalidKit): kit.install(self.archive, self.cms)

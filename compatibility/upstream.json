@@ -11,5 +11,11 @@
     "bin/compile-design-style.php": "939127dc929d13c99a91e0a57c646d63d2447455"
   },
   "observed_php_minimum": "8.5",
-  "checked_at": "2026-09-30"
+  "checked_at": "2026-09-30",
+  "compatible_install_schemas": {
+    "site-composition.schema.json": {
+      "commit": "e45aca880ee08e442094227cb710d524555b6be3",
+      "sha256": "9314b81dc26d2c836e58999a9b61f56fe4a1b3bf2eef6c09137d06fa090f0422"
+    }
+  }
 }

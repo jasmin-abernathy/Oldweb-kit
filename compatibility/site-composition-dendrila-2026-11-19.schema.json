@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dendrila CMS Site Composition",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "functional_kit",
+    "design_style"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "functional_kit": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "design_style": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "enabled_modules": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_-]*$"
+      }
+    },
+    "brand_overrides": {
+      "type": "object",
+      "properties": {
+        "logo_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "primary": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "secondary": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "background": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "text": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "wordmark_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "primary_strong": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "surface": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "muted": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "accent_soft": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "border": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "heading_font": {
+          "enum": [
+            "neutral-sans",
+            "humanist-sans",
+            "editorial-serif",
+            "system-serif"
+          ]
+        },
+        "body_font": {
+          "enum": [
+            "neutral-sans",
+            "humanist-sans",
+            "editorial-serif",
+            "system-serif"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "style_overrides": {
+      "type": "object",
+      "description": "Overrides limited to tokens supported by the selected front adapter."
+    }
+  },
+  "additionalProperties": false
+}

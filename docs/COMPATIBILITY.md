@@ -24,3 +24,12 @@ Le protocole actuel propose `form`, `records`, `gallery`, `requests`, `calendar`
 La sélection de style pourrait être un champ `single_choice` dans un formulaire fourni par le serveur. Cependant, `update_fields` ne prouve pas qu’une API de publication des styles existe déjà. Ajouter le stockage, les permissions, révisions et aperçu avant d’exposer le formulaire. Pour une action sur `records`, utiliser seulement une action serveur autorisée et en ligne (`allow_offline=false`). Les anciens clients ignorent les types inconnus ; aucune extension de code mobile n’est téléchargée.
 
 Les schémas sont figés par SHA-256 dans `compatibility/upstream.json`. L’installateur compare les schémas du CMS ciblé à ces copies et bloque toute divergence. La compatibilité ne s’appuie pas sur un numéro de version inventé.
+
+### Dendrila du 19 novembre 2026
+
+L’installateur accepte également l’empreinte exacte du schéma de composition
+du commit Dendrila `e45aca880ee08e442094227cb710d524555b6be3`. Ce schéma
+ajoute des options de marque et impose HTTPS pour le logo. La composition
+fournie par le kit reste valide. Les empreintes dans le manifeste et les
+archives 0.1.0 existantes restent compatibles. Une autre révision de schéma
+requiert toujours une vérification avant d’être acceptée.
