@@ -78,6 +78,21 @@ Une inspection du **DOM de page (hors CSS)** sur Ragekit montre dans un bloc `pa
 
 **Conséquence pour la P1 :** implémenter en premier une **ondulation Ripple originale**, sans copier le shader Cargo ; démonstrateur avec `canvas` et poster local, et repli explicite si WebGL indisponible. Relever ensuite les vrais coûts en téléchargement et GPU.
 
+## Premier prototype implémenté dans Dendrila (19 novembre 2026)
+
+Le premier **Ripple original** n'est plus une simple idée : il est développé dans la [PR Dendrila #35](https://github.com/jasmin-abernathy/dendrila-cms/pull/35) (**brouillon non fusionné**) :
+
+- `public/assets/oldweb-ripple.js` : shader WebGL 1 original, déformation lente et pointeur, cadence et dimensions bornées ;
+- `public/assets/oldweb-ripple.css` : fond, poster, pause accessible, comportement en réduction des mouvements ;
+- `src/Front/OldwebRippleBackdrop.php` : configuration fermée et validée avec média local ;
+- `PublicPageRenderer` : injection opt-in du décor uniquement si `presentation['backdrop']` est fourni ;
+- `ReferenceSiteBuilder` et `bin/build-reference-site.php --ripple` : exemple avec image SVG d'origine et page `ripple-preview.html` ;
+- tests de contrat et de non-régression ajoutés.
+
+**Vérifications effectuées** : syntaxe JS parse OK et simulation des cas WebGL disponible, pause/reprise, absence de WebGL, reduced-motion. **À faire** : tests PHP 8.5, vérification graphique en navigateur, mesures de performance et raccordement à l'éditeur Dendrila/MMW. Aucun site en production n'est modifié.
+
+La documentation d'utilisation est `dendrila-cms/docs/OLDWEB-RIPPLE.md`. Le renderer actif appartient à Dendrila ; **Oldweb-kit garde les styles déclaratifs** et ne doit pas embarquer de code exécutable dans son ZIP.
+
 ## Phases et critères d'acceptation
 
 - [x] **P0a — Identification** : un effet concret confirmé sur une page de Ragekit, `data-backdrop="ripple"` et `<canvas class="displacement_canvas">` (capture WebInspector du 19/11/2026).
