@@ -64,9 +64,24 @@ Vérifier ensuite : élément effectivement affiché, type MIME, poids transfér
 - Documentation Cargo Backdrops : https://cargo.site/docs (backdrops vidéo et interactifs).
 - Compatibilité Cargo : https://cargo.site/docs/browser-support (certaines animations requièrent WebGL).
 
+## Observation confirmée du 19 novembre 2026
+
+Une inspection du **DOM de page (hors CSS)** sur Ragekit montre dans un bloc `page-3` :
+
+```html
+<div data-backdrop="ripple" style="">
+  <canvas width="1219" height="0" class="displacement_canvas"></canvas>
+</div>
+```
+
+**Fait établi :** Ragekit configure au moins un fond Cargo de type **Ripple** avec un Canvas de déplacement. La requête réseau `freight.cargo.site/w/2048/t/webgl/i` rend plausible une texture pour un rendu WebGL, sans prouver que ce Canvas utilisait WebGL ni qu'il dessinait au moment de la capture (`height="0"`). Aucune balise `<video>` n'a été trouvée par WebInspector dans les recherches rapportées, mais ceci ne prouve pas l'absence de vidéo sur toutes les pages. Les flux `googlevideo.com` peuvent être les vidéos YouTube intégrées.
+
+**Conséquence pour la P1 :** implémenter en premier une **ondulation Ripple originale**, sans copier le shader Cargo ; démonstrateur avec `canvas` et poster local, et repli explicite si WebGL indisponible. Relever ensuite les vrais coûts en téléchargement et GPU.
+
 ## Phases et critères d'acceptation
 
-- [ ] **P0 — Recherche** : identifier au moins un effet concret de Ragekit et ses médias ; sauvegarder les observations techniques sans copier d'assets non autorisés.
+- [x] **P0a — Identification** : un effet concret confirmé sur une page de Ragekit, `data-backdrop="ripple"` et `<canvas class="displacement_canvas">` (capture WebInspector du 19/11/2026).
+- [ ] **P0b — Validation du rendu** : constater l'animation effective, le type exact de contexte Canvas, les médias et les octets transférés ; les autres sections de Ragekit peuvent utiliser d'autres fonds.
 - [ ] **P1 — Preuve de concept** : un effet original local audité, un poster fixe, un contrôle pause et aucun appel réseau tiers ; démo autonome et mesures.
 - [ ] **P2 — API Dendrila** : renderer commun, liste blanche de presets, validation des paramètres, pipeline médias/ressources, séparation kit/moteur.
 - [ ] **P3 — Éditeur** : choix et aperçu réversible, publication/rollback, mobile.
