@@ -21,6 +21,10 @@ Réutiliser le noyau CMS pour des réglages en brouillon, aperçu autorisé, val
 
 `contracts/retro-blocks.json` décrit les données souhaitées, **ce n’est pas un fichier à importer dans les schémas du CMS**. Raccorder les boutons/liens/galeries au modèle générique existant. Livre d’or, compteur et webring automatique demandent un vrai backend, modération, contrôle de données et tests de sécurité ; ils ne sont pas nécessaires au premier rendu.
 
+## Fonds animés (extension facultative, non encore implémentée)
+
+La spécification et le plan d'intégration sont dans [ANIMATED-BACKDROPS.md](ANIMATED-BACKDROPS.md). La première version reste statique ; les effets (vidéo, Canvas/SVG/WebGL) seront ajoutés **dans un renderer de confiance côté Dendrila** et paramétrés via un contrat déclaratif versionné, avec poster, pause, reduced-motion et repli sans WebGL. Les ZIP de design n'importent aucun script arbitraire.
+
 ## Tests restants
 
 - Exécuter le compilateur PHP ≥ 8.5 sur un checkout cible avec son autoload.

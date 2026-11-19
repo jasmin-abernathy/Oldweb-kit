@@ -52,6 +52,7 @@ Les dates 1999/2004/2008 sont des repères d’ambiance issus des échanges du 1
 - [Architecture](docs/ARCHITECTURE.md)
 - [UX/UI](docs/UX-UI.md)
 - [Modules rétro](docs/MODULES.md)
+- [Fonds animés rétro sans Flash — spécification et enquête WebInspector](docs/ANIMATED-BACKDROPS.md)
 - [Plan d’intégration](docs/INTEGRATION.md)
 - [Origine du projet](docs/ORIGINS.md)
 
