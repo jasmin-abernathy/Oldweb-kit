@@ -1,5 +1,7 @@
 # Vérification locale — 30 septembre 2026
 
+[English](VALIDATION.en.md)
+
 - 19 tests Python réussis : validation, archives malveillantes, collisions, dérive du schéma, verrou, rollback après erreur, conservation de la configuration active et reproductibilité du ZIP.
 - `validate`, `build` et `verify` réussis.
 - Compilation des dix variables conforme aux mappings lus dans le compilateur CMS.

@@ -1,0 +1,29 @@
+{
+  "oldweb-personal": {
+    "label": "Personal homepage — 2000s",
+    "description": "Crisp borders, visible links, a gallery and personal journal; retro rendering is supplied by a dedicated adapter.",
+    "keywords": [
+      "retro",
+      "2000s",
+      "personal web"
+    ]
+  },
+  "oldweb-portal": {
+    "label": "Panel-based portal — 2000s",
+    "description": "Compact sections, central news and secondary panels; retro rendering is supplied by a dedicated adapter.",
+    "keywords": [
+      "retro",
+      "2000s",
+      "personal web"
+    ]
+  },
+  "oldweb-blog": {
+    "label": "Illustrated blog — 2000s",
+    "description": "Reading column, articles and illustrated banner; retro rendering is supplied by a dedicated adapter.",
+    "keywords": [
+      "retro",
+      "2000s",
+      "personal web"
+    ]
+  }
+}

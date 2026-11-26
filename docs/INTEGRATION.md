@@ -1,5 +1,7 @@
 # Prochaine intégration dans Dendrila
 
+[English](INTEGRATION.en.md)
+
 Le kit est autonome dans `jasmin-abernathy/Oldweb-kit`. Le noyau reste dans `dendrila-cms` et l’app dans `lepotager-site-manager`.
 
 ## Premier lot livré

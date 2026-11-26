@@ -1,5 +1,7 @@
 # Fonds animés rétro — Flash sans Flash (proposition d'intégration)
 
+[English](ANIMATED-BACKDROPS.en.md)
+
 Statut : **spécification et recherche, pas encore rendu intégré**. Ce document prépare une extension facultative d'Oldweb-kit et de l'adaptateur public **Dendrila CMS**. Il ne change ni le schéma des styles v1, ni le contenu du ZIP v0.1, ni les sites publiés.
 
 ## Intention

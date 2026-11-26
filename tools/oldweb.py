@@ -97,7 +97,12 @@ def expected_manifest(root=ROOT):
             'styles': list(IDS), 'schema_sha256': provenance['schemas'],
             'automatic_activation': False, 'contains_executable_code': False}
 
-def source_payload(root=ROOT):
+def source_payload(root=ROOT, language='fr'):
+    if language not in ('fr', 'en'):
+        raise InvalidKit('Unsupported catalogue language')
+    translations = parse_json((root / 'translations/en.json').read_bytes()) if language == 'en' else None
+    if translations is not None and (type(translations) is not dict or set(translations) != set(IDS)):
+        raise InvalidKit('Invalid catalogue translation IDs')
     provenance = parse_json((root / 'compatibility/upstream.json').read_bytes())
     for name, digest in provenance['schemas'].items():
         if hashlib.sha256((root / 'compatibility' / name).read_bytes()).hexdigest() != digest:
@@ -105,7 +110,14 @@ def source_payload(root=ROOT):
     payload = {'manifest.json': json_bytes(expected_manifest(root))}
     for name, path in zip(IDS, STYLE_PATHS):
         raw = (root / path).read_bytes()
-        validate_style(raw, name, root)
+        data = validate_style(raw, name, root)
+        if translations is not None:
+            fields = translations[name]
+            if type(fields) is not dict or set(fields) != {'label', 'description', 'keywords'}:
+                raise InvalidKit('Invalid catalogue translation fields: ' + name)
+            data.update(fields)
+            raw = json_bytes(data)
+            validate_style(raw, name, root)
         payload[path] = raw
     composition = parse_json((root / 'examples/site-composition.json').read_bytes())
     validate_schema(schema_for('site-composition.schema.json', root), composition)
@@ -115,8 +127,8 @@ def source_payload(root=ROOT):
                                   for path, raw in sorted(payload.items())).encode('ascii')
     return payload
 
-def build(destination, root=ROOT):
-    payload = source_payload(root)
+def build(destination, root=ROOT, language='fr'):
+    payload = source_payload(root, language)
     destination = Path(destination)
     if destination.exists() or destination.is_symlink():
         raise InvalidKit('Output already exists; choose a new filename')
@@ -264,8 +276,10 @@ def main():
     commands.add_parser('validate')
     compile_command = commands.add_parser('compile')
     compile_command.add_argument('style', choices=IDS)
-    for command in ('build', 'verify'):
-        commands.add_parser(command).add_argument('archive', type=Path)
+    build_command = commands.add_parser('build')
+    build_command.add_argument('archive', type=Path)
+    build_command.add_argument('--language', choices=('fr', 'en'), default='fr', help='Catalogue metadata language (default: fr)')
+    commands.add_parser('verify').add_argument('archive', type=Path)
     install_command = commands.add_parser('install')
     install_command.add_argument('archive', type=Path)
     install_command.add_argument('cms', type=Path)
@@ -274,11 +288,12 @@ def main():
     try:
         if args.command == 'validate':
             source_payload()
-            print('Styles and composition valid against pinned CMS schemas.')
+            source_payload(language='en')
+            print('French and English styles and composition valid against pinned CMS schemas.')
         elif args.command == 'compile':
             print(compile_style(args.style), end='')
         elif args.command == 'build':
-            print(build(args.archive))
+            print(build(args.archive, language=args.language))
         elif args.command == 'verify':
             verify(args.archive)
             print('Archive valid. Integrity is not proof of publisher identity.')

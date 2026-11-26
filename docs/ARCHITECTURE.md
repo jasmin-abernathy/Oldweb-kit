@@ -1,5 +1,7 @@
 # Architecture proposée
 
+[English](ARCHITECTURE.en.md)
+
 ## Trois couches
 
 | Couche | Responsabilité | Distribution |

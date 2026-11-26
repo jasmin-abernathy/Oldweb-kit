@@ -1,5 +1,7 @@
 # Travail dans Oldweb-kit
 
+[English](AGENTS.en.md)
+
 - Lire `repo-factory/AGENTS.md`, son playbook de compatibilité, les consignes du CMS et le protocole v1 MMW avant une intégration.
 - Styles visuels indépendants des kits fonctionnels ; classement par résultat graphique.
 - Ne pas modifier les contenus, URL, permissions, authentification ou réglages actifs pendant l’installation du catalogue.

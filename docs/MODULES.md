@@ -1,5 +1,7 @@
 # Fonctions rétro : périmètre
 
+[English](MODULES.en.md)
+
 | Élément | Première livraison | Contrat et comportement |
 | --- | --- | --- |
 | Encadrés / navigation rétro | Oui | Rendu des menus et blocs existants |

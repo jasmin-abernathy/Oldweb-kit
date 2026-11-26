@@ -1,5 +1,7 @@
 # Installer le catalogue
 
+[English](INSTALLATION.en.md)
+
 L’outil est un CLI de mainteneur, pas une route Web. Ne pas le mettre à disposition de visiteurs ni construire une commande shell à partir d’entrées utilisateur.
 
 ## Préconditions
@@ -11,6 +13,8 @@ L’outil est un CLI de mainteneur, pas une route Web. Ne pas le mettre à dispo
 - Les chemins cibles ne sont pas des liens symboliques et aucun style OldWeb n’est déjà présent.
 
 Exécuter d’abord `validate`, `build`, `verify` et `install --dry-run` comme indiqué dans le README. Une installation réussie ajoute trois répertoires dans `design-styles/`, chacun avec `style.json` et un reçu local `.oldweb-install.json`.
+
+Pour un catalogue en anglais, utiliser `build ... --language en`. Le ZIP français reste le défaut. Les deux variantes partagent les mêmes identifiants et schémas v1 ; seuls les libellés, descriptions et mots-clés changent. Aucun changement de langue à chaud n’est ajouté au CMS, et aucune réinstallation n’écrase un style existant.
 
 Le paquet est contrôlé **avant** d’écrire dans le CMS : seuls cinq fichiers prédéfinis sont admis ; chemins malveillants, doublons, collisions de casse, liens symboliques, fichiers chiffrés, excès de taille/nombre, manifeste erroné et empreintes différentes sont refusés. Les JSON sont revalidés avant l’import. Il n’y a pas d’extraction générale du ZIP : seuls les octets des fichiers connus sont lus.
 

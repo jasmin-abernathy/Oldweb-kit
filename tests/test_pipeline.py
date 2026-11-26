@@ -44,6 +44,37 @@ class PipelineTests(unittest.TestCase):
     def test_build_is_reproducible(self):
         second = kit.build(self.root / 'second.zip')
         self.assertEqual(self.archive.read_bytes(), second.read_bytes())
+    def test_english_catalogue_is_reproducible_and_installable(self):
+        first = kit.build(self.root / 'english.zip', language='en')
+        second = kit.build(self.root / 'english-second.zip', language='en')
+        self.assertEqual(first.read_bytes(), second.read_bytes())
+        self.assertNotEqual(first.read_bytes(), self.archive.read_bytes())
+        original = kit.verify(self.archive)
+        translated = kit.verify(first)
+        self.assertEqual(original['manifest.json'], translated['manifest.json'])
+        self.assertEqual(set(original), set(translated))
+        for sid, path in zip(kit.IDS, kit.STYLE_PATHS):
+            fr, en = kit.parse_json(original[path]), kit.parse_json(translated[path])
+            self.assertNotEqual(fr['label'], en['label'])
+            self.assertEqual(en['keywords'], ['retro', '2000s', 'personal web'])
+            for field in ('label', 'description', 'keywords'):
+                del fr[field]
+                del en[field]
+            self.assertEqual(fr, en)
+        self.assertEqual(kit.install(first, self.cms, True), list(kit.IDS))
+        self.assertEqual(kit.install(first, self.cms), list(kit.IDS))
+        for sid, path in zip(kit.IDS, kit.STYLE_PATHS):
+            self.assertEqual((self.cms / path).read_bytes(), translated[path])
+        self.assertEqual(self.sentinel.read_bytes(), self.before)
+
+    def test_default_language_stays_french(self):
+        explicit = kit.build(self.root / 'french.zip', language='fr')
+        self.assertEqual(self.archive.read_bytes(), explicit.read_bytes())
+
+    def test_unsupported_language_refused(self):
+        with self.assertRaises(kit.InvalidKit):
+            kit.source_payload(language='de')
+
     def test_dry_run_is_read_only(self):
         self.assertEqual(kit.install(self.archive, self.cms, True), list(kit.IDS))
         self.assertEqual(list((self.cms / 'design-styles').iterdir()), [])
